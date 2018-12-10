@@ -8,15 +8,15 @@ if (isset($_POST['username']) && isset($_POST['password']))
 		$password= md5($_POST['password']);
 		//sqll query
 		//double quotes outside so we can use single quotes inside
-		$query="SELECT * FROM `admin` WHERE (username='$username' OR email='$username')  AND password='$password'";
+		$query="SELECT * FROM `admin` WHERE (aname='$username' OR aemail='$username')  AND password='$password'";
 		$result = mysqli_query($connection,$query);
 		$row = mysqli_fetch_assoc($result);
 		$count = mysqli_num_rows($result);
 		if($count==1)
 		{
 			//session_start();
-			$_SESSION['ausername'] = $row["username"];
-			$_SESSION['password'] = $password;
+			$_SESSION['ausername'] = $row["aname"];
+			//$_SESSION['password'] = $password;
 			// alternative redirect (die() should be there)
 			// echo "<script>location.href='target-page.php';</script>";
 			//define('BASEPATH',TRUE);
@@ -30,13 +30,13 @@ if (isset($_POST['username']) && isset($_POST['password']))
 		//	$fmsg="Invalid Username/Password";
 		//}
 		{
-		$queryd="SELECT * FROM `doctors` WHERE (username='$username' OR email='$username') AND password='$password'";
-		$resultd = mysqli_query($connection,$queryd);
-		$rowd = mysqli_fetch_assoc($resultd);
-		$countd = mysqli_num_rows($resultd);
-		if($countd==1)
+		$queryc="SELECT * FROM `clients` WHERE (cusername='$username' OR cemail='$username') AND cpassword='$password'";
+		$resultc = mysqli_query($connection,$queryc);
+		$rowc = mysqli_fetch_assoc($resultc);
+		$countc = mysqli_num_rows($resultc);
+		if($countc==1)
 		{
-			$_SESSION['dusername'] = $rowd["username"];
+			$_SESSION['dusername'] = $rowc["username"];
 			// alternative redirect (die() should be there)
 			// echo "<script>location.href='target-page.php';</script>";
 			//define('BASEPATH',TRUE);
