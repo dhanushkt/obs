@@ -266,12 +266,12 @@ if(isset($_POST['resetemail']))
                         </div>
                     </div>
                     
-                   <!--- Removed Sigin up button
+                   
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            <p>Don't have an account? <a href="register2.html" class="text-primary m-l-5"><b>Sign Up</b></a></p>
+                            <p>Don't have an account? <a href="registerclient.php" class="text-primary m-l-5"><b>Sign Up</b></a></p>
                         </div>
-                    </div> --->
+                    </div> 
                     
                 </form>
                
