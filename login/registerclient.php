@@ -9,6 +9,9 @@ $sphone=$_POST['sphone'];
 $saddr=$_POST['saddress'];
 $sgst=$_POST['sgst'];
 
+$insertquery="INSERT INTO `clients` (cuname, cemail, cphno, cpass, sname, semail, sphno, saddr, sgst) VALUES ('$cuname','$cemail','$cphno','$cpass','$sname','$semail','$sphone','$saddr','$sgst')";
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
