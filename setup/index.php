@@ -1,5 +1,5 @@
 <?php
-require('../admin/connect.php');
+require('../login/connect.php');
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ require('../admin/connect.php');
                     <div class="col-md-6 offset-md-3">
                         <div class="white-box">
                             <h3 class="box-title m-b-0">Set-up Admin Account</h3>
-                            <p class="text-muted m-b-30 font-13"> Enter the details to create a new admin account to access AlphaCare</p>
+                            <p class="text-muted m-b-30 font-13"> Enter the details to create a new admin account to access Alpha Billing System</p>
                             <div id="exampleValidator" class="wizard">
                                <ul class="row wizard-steps text-center">
 								   <li class="col-md-4"> <h4><span><i class="ti-user"></i></span>Username</h4></li>
@@ -56,6 +56,10 @@ require('../admin/connect.php');
                                                 <label class="col-xs-3 control-label">Email address</label>
                                                 <div class="col-xs-5">
                                                     <input id="adminemail" type="text" class="form-control" name="email" />
+                                                </div>
+												<label class="col-xs-3 control-label">Mobile Number</label>
+                                                <div class="col-xs-5">
+                                                    <input id="amob" type="text" class="form-control" name="mobile" />
                                                 </div>
                                             </div>
                                         </div>
@@ -125,6 +129,13 @@ require('../admin/connect.php');
                                 }
                             }
                         },
+						mobile: {
+                            validators: {
+                                notEmpty: {
+                                    message: 'Mobile number is required'
+                                }
+                            }
+                        },
                         password: {
                             validators: {
                                 notEmpty: {
@@ -174,6 +185,7 @@ require('../admin/connect.php');
 				
 				var username=document.getElementById('adminuname').value; 
 				var email=document.getElementById('adminemail').value;
+				var mobnum=document.getElementById('amob').value;
 				var password=document.getElementById('adminpass').value;
 	
 				$.ajax({
@@ -181,7 +193,8 @@ require('../admin/connect.php');
 						type: 'POST',
 						data: { uname: username,
 								email: email,
-							  	pass: password },
+							  	pass: password,
+							 	amob: mobnum },
 						success: function(){
 							$('#validation').submit();
                 			swal("Admin Account Created!", "Redirecting to login page in 4 seconds.", "success");
