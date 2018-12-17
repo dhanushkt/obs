@@ -1,6 +1,6 @@
 <?php
 require('connect.php');
-if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']))
+if(isset($_POST['username']) && isset($_POST['cpass']))
 {
 	if(!($_POST['cpass']==""))
 	{
@@ -36,7 +36,7 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
 	}
 	else
 	{
-		$fmsg="please fill out all the fields";
+		$fmsg="sadas";
 	}
 }
 
@@ -51,7 +51,7 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>Elite Admin Template - The Ultimate Multipurpose admin template</title>
+    <title>AlphaSystems - OBS</title>
     <!-- Bootstrap Core CSS -->
     <link href="../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
@@ -64,13 +64,19 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
     <!-- color CSS -->
     <link href="../plugins/css/colors/default.css" id="theme" rel="stylesheet">
 	<link href="../plugins/bower_components/sweetalert/sweetalert.css" rel="stylesheet" type="text/css">
+	<!-- morris CSS -->
+    <link href="../plugins/bower_components/morrisjs/morris.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
 <![endif]-->
-    <script src="../plugins/bower_components/sweetalert/sweetalert.min.js"></script>
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	
+	<script src="../plugins/bower_components/sweetalert/sweetalert.min.js"></script>
 	
 	<!-- username check js start -->
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
@@ -96,6 +102,7 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
 		} //finishAjax
 	</script>
 	<!-- username check js end -->
+	
 </head>
 
 <body>
@@ -108,6 +115,7 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
             <div class="">
                 <a href="javascript:void(0)" class="text-center db m-b-40"><img src="../plugins/images/eliteadmin-logo-dark.png" alt="Home" />
                     <br/><img src="../plugins/images/eliteadmin-text-dark.png" alt="Home" /></a>
+                <!-- multistep form -->
 				<?php if(isset($fmsg)) { ?>
 									<div class="alert alert-danger alert-dismissable">
 										<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -126,8 +134,8 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
 											?>
 										</div> 
 								<?php }?>
-                <!-- multistep form -->
-                <form method="post" id="msform">
+				
+                <form id="msform" method="post">
                     <!-- progressbar -->
                     <ul id="eliteregister">
                         <li class="active">Account Setup</li>
@@ -137,40 +145,47 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
                     <!-- fieldsets -->
                     <fieldset>
                         <h2 class="fs-title">Create your account</h2>
-						<input required type="text" name="username" placeholder="Username" id="username" autocomplete="off" />
+<!--                        <h3 class="fs-subtitle">This is step 1</h3> -->
+						<div class="form-group">
+							<input class="form-control" id="username" autocomplete="off" required type="text" name="username" placeholder="Username" value=""> </div>
 						<!-- username check start -->
 						<div>
 						<span id="usernameLoading"><img src="../plugins/images/busy.gif" alt="Ajax Indicator" height="15" width="15" /></span>
 						<span id="usernameResult" style="color: #E40003"></span>
 						</div>
 				        <!-- username check end -->
-                        <input required type="email" name="cemail" placeholder="Email" />
-						<input required minlength="10" type="number" name="cphno" placeholder="Mobile number" />
-                        <input required minlength="6" type="password" name="cpass" placeholder="Password" />
-                        <input  required minlength="6" type="password" name="crpass" placeholder="Confirm Password" />
+						<div class="form-group">
+                        <input class="form-control" data-error="This email address is invalid" type="email" name="cemail" placeholder="Email" />
+						 <div class="help-block with-errors"></div>
+						</div>
+						<input  type="number" name="cphno" placeholder="Mobile Number" />
+                        <input id="password" type="password" name="cpass" data-toggle="validator" data-minlength="6" class="form-control" id="inputPassword" placeholder="Password" required>
+                        <input type="password" id="conf_password" name="crpass" name="retypepassword" class="form-control" id="inputPasswordConfirm" data-match="#inputPassword" data-match-error="Passwords don't match" placeholder="Confirm" required>
+						<div class="help-block with-errors"></div>
                         <input type="button" name="next" class="next action-button" value="Next" />
                     </fieldset>
                     <fieldset>
                         <h2 class="fs-title">Shop Details</h2>
-                        <p>Displayed on bill</p>
-                        <input required type="text" name="sname" placeholder="Shop Name" />
+						<p>Displayed on bill</p>
+                        <input type="text" name="sname" placeholder="Shop Name" />
                         <input type="email" name="semail" placeholder="Shop email" />
+                        
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
-                        <input type="button" name="next" class="next action-button" value="Next" />
+<!--						<input type="submit" name="submit" class="submit action-button" value="Submit" />-->
+	                    <input type="button" name="next" class="next action-button" value="Next" />
                     </fieldset>
-                    <fieldset>
+                   <fieldset>
                         <h2 class="fs-title">Shop Contact Details</h2>
 <!--                        <h3 class="fs-subtitle">We will never sell it</h3>-->
-                        <input required type="number" name="sphone" placeholder="Shop phone (saparate multiple phone no. by comma)" />
-						<textarea required  name="saddress" placeholder="Shop Address"></textarea>
-						<input type="text" name="sgst" placeholder="GST number (optional)" />
-                    
+                        <input type="number" name="sphone" placeholder="Shop phone (saparate multiple phone no. by comma)" />
+						<textarea name="saddress" placeholder="Shop Address"></textarea>
+						<input required type="text" name="sgst" placeholder="GST number (optional)" />
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
-                        <input type="submit" name="submit" class="submit action-button" value="Submit" />
-                    </fieldset>
+                        <input type="submit" name="csubmit" class="action-button" value="Submit" />
+                    </fieldset> 
                 </form>
                 <div class="clear"></div>
-            </div>
+            
         </div>
     </section>
     <!-- jQuery -->
@@ -182,7 +197,7 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
     <!-- Menu Plugin JavaScript -->
     <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
     <script src="../plugins/bower_components/register-steps/jquery.easing.min.js"></script>
-    <script src="../plugins/bower_components/register-steps/register-init.js"></script>
+    <script src="../plugins/bower_components/register-steps/register-init-bup.js"></script>
     <!--slimscroll JavaScript -->
     <script src="../plugins/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
@@ -191,6 +206,10 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
     <script src="../plugins/js/custom.min.js"></script>
     <!--Style Switcher -->
     <script src="../plugins/bower_components/styleswitcher/jQuery.style.switcher.js"></script>
+	<!-- Custom Theme JavaScript -->
+	<script src="../plugins/js/custom.min.js"></script>
+	<script src="../plugins/js/validator.js"></script>
+	
 </body>
 
 </html>

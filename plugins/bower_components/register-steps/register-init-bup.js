@@ -1,11 +1,96 @@
+
 $(function() {
+	
 
 //jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
 
+
 $(".next").click(function(){
+	
+	
+	$(document).ready(function(){
+	
+	
+	// Custom method to validate username
+			$.validator.addMethod("usernameRegex", function(value, element) {
+				return this.optional(element) || /^[a-zA-Z0-9]*$/i.test(value);
+			}, "Username must contain only letters, numbers");
+		var form = $("#msform");
+				form.validate({
+					errorElement: 'span',
+					errorClass: 'help-block',
+					highlight: function(element, errorClass, validClass) {
+						$(element).closest('.form-group').addClass("form-control-danger");
+					},
+					unhighlight: function(element, errorClass, validClass) {
+						$(element).closest('.form-group').removeClass("form-control-danger");
+					},
+					rules: {
+						username: {
+							required: true,
+							usernameRegex: true,
+							minlength: 6,
+						},
+						password : {
+							required: true,
+						},
+						conf_password : {
+							required: true,
+							equalTo: '#password',
+						},
+						company:{
+							required: true,
+						},
+						url:{
+							required: true,
+						},
+						name: {
+							required: true,
+							minlength: 3,
+						},
+						email: {
+							required: true,
+							minlength: 3,
+						},
+						
+					},
+					messages: {
+						username: {
+							required: "Username required",
+						},
+						password : {
+							required: "Password required",
+						},
+						conf_password : {
+							required: "Password required",
+							equalTo: "Password don't match",
+						},
+						name: {
+							required: "Name required",
+						},
+						email: {
+							required: "Email required",
+						},
+					}
+				});
+
+});
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	if(animating) return false;
 	animating = true;
 	
@@ -75,8 +160,8 @@ $(".previous").click(function(){
 	});
 });
 
-//$(".submit").click(function(){
-//	return false;
-//})
+$(".submit").click(function(){
+	return false;
+})
 
 });
