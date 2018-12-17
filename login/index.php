@@ -26,50 +26,27 @@ if (isset($_POST['username']) && isset($_POST['password']))
 			
 		}
 		else
-		//{
-		//	$fmsg="Invalid Username/Password";
-		//}
+		
 		{
-		$queryc="SELECT * FROM `clients` WHERE (cusername='$username' OR cemail='$username') AND cpassword='$password'";
-		$resultc = mysqli_query($connection,$queryc);
-		$rowc = mysqli_fetch_assoc($resultc);
-		$countc = mysqli_num_rows($resultc);
-		if($countc==1)
-		{
-			$_SESSION['dusername'] = $rowc["username"];
-			// alternative redirect (die() should be there)
-			// echo "<script>location.href='target-page.php';</script>";
-			//define('BASEPATH',TRUE);
-			//<script type="text/javascript">location.href = 'newurl';</script>
-			echo'<script> window.location="../doctor/index.php";</script>';
-			//header('Location: index.html');
-			
-		}
-		else
-		{
-			$querys="SELECT * FROM `staffs` WHERE (username='$username' OR email='$username') AND password='$password'";
-		$results = mysqli_query($connection,$querys);
-		$rows = mysqli_fetch_assoc($results);
-		$counts = mysqli_num_rows($results);
-		if($counts==1)
-		{
-			$_SESSION['susername'] = $rows["username"];
-			// alternative redirect (die() should be there)
-			// echo "<script>location.href='target-page.php';</script>";
-			//define('BASEPATH',TRUE);
-			//<script type="text/javascript">location.href = 'newurl';</script>
-			echo'<script> window.location="../staff/index.php";</script>';
-			//header('Location: index.html');
-			
-		}
+			$queryc="SELECT * FROM `clients` WHERE (cuname='$username' OR cemail='$username') AND cpassword='$password'";
+			$resultc = mysqli_query($connection,$queryc);
+			$rowc = mysqli_fetch_assoc($resultc);
+			$countc = mysqli_num_rows($resultc);
+			if($countc==1)
+			{
+				$_SESSION['cusername'] = $rowc["cuname"];
+				// alternative redirect (die() should be there)
+				// echo "<script>location.href='target-page.php';</script>";
+				//define('BASEPATH',TRUE);
+				//<script type="text/javascript">location.href = 'newurl';</script>
+				echo'<script> window.location="../client/index.php";</script>';
+				//header('Location: index.html');
+
+			}
 			else
-		{
-			$fmsg="Invalid Username/Password";
-		}
-			
-		}
-		
-		
+			{
+				$fmsg="Invalid Username/Password";
+			}	
 		}
 		
 	}
