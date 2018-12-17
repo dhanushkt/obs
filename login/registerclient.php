@@ -7,8 +7,8 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
 	$cuname=$_POST['username'];
 	$cemail=$_POST['cemail'];
 	$cphno=$_POST['cphno'];
-	$cpass=$_POST['cpass'];
-	$crpass=$_POST['crpass'];
+	$cpass=md5($_POST['cpass']);
+	$crpass=md5($_POST['crpass']);
 	$sname=$_POST['sname'];
 	$semail=$_POST['semail'];
 	$sphone=$_POST['sphone'];
@@ -166,7 +166,7 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
 						<input type="text" name="sgst" placeholder="GST number (optional)" />
                     
                         <input type="button" name="previous" class="previous action-button" value="Previous" />
-                        <input type="submit" name="submit" class="submit action-button" value="Submit" />
+                        <input type="submit" name="csubmit" class="action-button" value="Submit" />
                     </fieldset>
                 </form>
                 <div class="clear"></div>
