@@ -8,7 +8,7 @@ if (isset($_POST['username']) && isset($_POST['password']))
 		$password= md5($_POST['password']);
 		//sqll query
 		//double quotes outside so we can use single quotes inside
-		$query="SELECT * FROM `admin` WHERE (aname='$username' OR aemail='$username')  AND password='$password'";
+		$query="SELECT * FROM `admin` WHERE (aname='$username' OR aemail='$username')  AND apassword='$password'";
 		$result = mysqli_query($connection,$query);
 		$row = mysqli_fetch_assoc($result);
 		$count = mysqli_num_rows($result);
