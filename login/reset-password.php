@@ -16,12 +16,12 @@ if(isset($_POST['password']) && isset($_POST['cpassword']))
 	$repassword=md5($_POST['cpassword']);
 	if($password == $repassword)
 	{
-		$query1="SELECT * FROM admin WHERE email='$email'";
+		$query1="SELECT * FROM admin WHERE aemail='$email'";
 		$result1 = mysqli_query($connection,$query1);
 		$count1 = mysqli_num_rows($result1);
 		if($count1==1)
 		{
-			$query2="UPDATE admin SET password='$password' WHERE email='$email' ";
+			$query2="UPDATE admin SET apassword='$password' WHERE aemail='$email' ";
 			$result2 = mysqli_query($connection, $query2);
 		 	if($result2)
 			{
@@ -32,12 +32,12 @@ if(isset($_POST['password']) && isset($_POST['cpassword']))
 		}
 		else
 		{
-			$query3="SELECT * FROM doctors WHERE email='$email'";
+			$query3="SELECT * FROM clients WHERE cemail='$email'";
 			$result3 = mysqli_query($connection,$query3);
 			$count3 = mysqli_num_rows($result3);
 			if($count3==1)
 			{
-				$query4="UPDATE doctors SET password='$password' WHERE email='$email' ";
+				$query4="UPDATE clients SET cpassword='$password' WHERE cemail='$email' ";
 				$result4 = mysqli_query($connection, $query4);
 				if($result4)
 				{

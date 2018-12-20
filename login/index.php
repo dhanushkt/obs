@@ -57,8 +57,8 @@ if(isset($_POST['resetemail']))
 {
 	
 	$remail=$_POST['resetemail'];
-	$query="SELECT * FROM `admin` WHERE email='$remail'";
-	$query1="SELECT * FROM `doctors` WHERE email='$remail'";
+	$query="SELECT * FROM `admin` WHERE aemail='$remail'";
+	$query1="SELECT * FROM `clients` WHERE cemail='$remail'";
 	$result = mysqli_query($connection,$query);
 	$result1= mysqli_query($connection,$query1);
 	$count = mysqli_num_rows($result);
@@ -69,7 +69,7 @@ if(isset($_POST['resetemail']))
 			$mdstr=md5($str);
 			$query2="INSERT INTO `reset_password` (email,tempstr) VALUES ('$remail','$mdstr') ";
 			$result2 = mysqli_query($connection, $query2);
-			$link="http://localhost/ohms/login/reset-password.php?id=$mdstr";
+			$link="http://localhost/obs/login/reset-password.php?id=$mdstr";
 				
 			$to_Email       = $remail; // Replace with recipient email address
 			$subject        = 'Password Reset'; //Subject line for emails
@@ -106,7 +106,7 @@ if(isset($_POST['resetemail']))
     <table border="0" cellpadding="0" cellspacing="0" style="width: 100%; margin-bottom: 20px">
       <tbody>
         <tr>
-          <td style="vertical-align: top; padding-bottom:30px;" align="center"><a href="http://infinityx.000webhostapp.com/login/" target="_blank"><img src="https://i.imgur.com/zKKdcP7.png" alt="AlphaCare" style="border:none"><br/>
+          <td style="vertical-align: top; padding-bottom:30px;" align="center"><a href="http://infinityx.000webhostapp.com/login/" target="_blank"><img src="https://i.imgur.com/zKKdcP7.png" alt="AlphaSystems" style="border:none"><br/>
             <img src="https://i.imgur.com/ZA1Wwui.png" style="border:none"></a> </td>
         </tr>
       </tbody>
@@ -132,7 +132,7 @@ if(isset($_POST['resetemail']))
       </table>
     </div>
     <div style="text-align: center; font-size: 12px; color: #b2b2b5; margin-top: 20px">
-      <p> AlphaCare Online Hospital Management System © 2018 <br>
+      <p> AlphaSystems Online Billing System © 2018 <br>
       </p>
     </div>
   </div>
@@ -172,7 +172,7 @@ if(isset($_POST['resetemail']))
     <meta name="description" content="AlphaCare Online Hospital Management System">
     <meta name="author" content="Dhanush KT, Nishanth Bhat">
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>AlphaCare - OHMS</title>
+    <title>AlphaSystems - OBS</title>
     <!-- Bootstrap Core CSS -->
     <link href="../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
