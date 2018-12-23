@@ -246,7 +246,7 @@ if(isset($_POST['resetemail']))
                    
                     <div class="form-group m-b-0">
                         <div class="col-sm-12 text-center">
-                            <p>Don't have an account? <a href="registerclient.php" class="text-primary m-l-5"><b>Sign Up</b></a></p>
+                            <p>Don't have an account? <a href="register-client.php" class="text-primary m-l-5"><b>Sign Up</b></a></p>
                         </div>
                     </div> 
                     
