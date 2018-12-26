@@ -128,7 +128,7 @@ if(isset($_POST['username']) && isset($_POST['cpass']) && isset($_POST['cemail']
                     <div class="form-group ">
                         <div class="col-xs-12">
                             <label class="control-label">Username</label>
-                            <input autocomplete="off" class="form-control" type="text" required placeholder="Enter the username" id="username" name="cuname">
+                            <input autocomplete="off" class="form-control" type="text" required placeholder="Enter the username" id="username" name="username">
 							<!-- username check start -->
 							<div>
 							<span id="usernameLoading"><img src="../plugins/images/busy.gif" alt="Ajax Indicator" height="15" width="15" /></span>
