@@ -4,6 +4,11 @@
             <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
         </svg>
     </div>
+<?php //universal php for displaying name
+$queryimg="SELECT sname FROM clients WHERE cuname='$ausername'";
+$resultimg = mysqli_query($connection, $queryimg);
+$rowimg = mysqli_fetch_assoc($resultimg);
+?>
     <div id="wrapper">
         <!-- Top Navigation -->
         <nav class="navbar navbar-default navbar-static-top m-b-0">

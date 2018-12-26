@@ -40,10 +40,10 @@
 					<li> <a href="add-patient.php">Add Patient</a> </li>
 				</ul>
 			</li> --->
-			<li> <a href="view-appointments.php" class="waves-effect text-white"><i class="fa fa-calendar-o p-r-10"></i> <span class="hide-menu"> Create Bill <span class="fa arrow"></span></span></a>
+			<li> <a href="create-invoice.php" class="waves-effect text-white"><i class="fa fa-calendar-o p-r-10"></i> <span class="hide-menu"> Create Bill <span class="fa arrow"></span></span></a>
 	
 			</li>
-			<li> <a href="view-wards.php" class="waves-effect text-white"><i class="fa fa-hospital-o p-r-10"></i> <span class="hide-menu"> Wards <span class="fa arrow"></span></span></a>
+			<li> <a href="view-wards.php" class="waves-effect text-white"><i class="fa fa-hospital-o p-r-10"></i> <span class="hide-menu"> Show bills <span class="fa arrow"></span></span></a>
 
 			</li>
 			<!--- <li> <a href="javascript:void(0);" class="waves-effect text-white"><i class="fa fa-envelope p-r-10"></i> <span class="hide-menu"> Messages <span class="fa arrow"></span></span></a>
