@@ -43,7 +43,7 @@ $rowimg = mysqli_fetch_assoc($resultimg);
                     <!-- /.Task dropdown -->
                     <!-- .user dropdown -->
                     <li class="dropdown">
-                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="../plugins/images/users/user(2).png" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $ausername; ?></b> </a>
+                        <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="../plugins/images/users/shop.png" alt="user-img" width="36" class="img-circle"><b class="hidden-xs"><?php echo $ausername; ?></b> </a>
                         <ul class="dropdown-menu dropdown-user scale-up">
                             <li><a href="my-profile.php"><i class="ti-user"></i> My Profile</a></li>
                             <!--<li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>

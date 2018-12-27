@@ -9,19 +9,21 @@ elseif(isset($_SESSION['ausername']))
 {
 	$ausername=$_SESSION['ausername'];
 }
+date_default_timezone_set('Asia/Kolkata');
+$date=date("d-m-Y");
 
-//$getpatientcount=mysqli_query($connection,"SELECT * FROM patients WHERE dod IS NULL");
-//$pcount=mysqli_num_rows($getpatientcount);
-//
-//$getdoccount=mysqli_query($connection,"SELECT * FROM doctors");
-//$dcount=mysqli_num_rows($getdoccount);
-//
-//$getstaffcount=mysqli_query($connection,"SELECT * FROM staffs");
-//$scount=mysqli_num_rows($getstaffcount);
-//
-//$getwardcount=mysqli_query($connection,"SELECT * FROM wards WHERE status='0'");
-//$wcount=mysqli_num_rows($getwardcount);
-//
+$getbillcount=mysqli_query($connection,"SELECT * FROM bills WHERE billdate='$date'");
+$bcount=mysqli_num_rows($getbillcount);
+
+$getamtsum=mysqli_query($connection,"SELECT sum(total_amt) FROM bills WHERE billdate='$date'");
+$sumcount=mysqli_fetch_array($getamtsum);
+
+$gettotbillcount=mysqli_query($connection,"SELECT * FROM bills");
+$totbcount=mysqli_num_rows($gettotbillcount);
+
+$gettotamtsum=mysqli_query($connection,"SELECT sum(total_amt) FROM bills");
+$totsumcount=mysqli_fetch_array($gettotamtsum);
+
 //$countapoint=mysqli_query($connection,"SELECT * FROM appointments JOIN doctors ON appointments.doc_id = doctors.doc_id  WHERE (status='In Process') AND (doctors.username='$ausername')");
 //$acount=mysqli_num_rows($countapoint);
 ?>
@@ -41,7 +43,8 @@ elseif(isset($_SESSION['ausername']))
     <meta name="author" content="Dhanush KT, Nishanth Bhat">
     <!--csslink.php includes fevicon and title-->
     <?php include 'assets/csslink.php'; ?>
-	<link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+<!--	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">-->
+	
 	<link href="../plugins/css/hover.css" rel="stylesheet" media="all">
 </head>
 
@@ -80,7 +83,7 @@ elseif(isset($_SESSION['ausername']))
 							<img id="theImgId" class="card-img" src="../plugins/images/cards/bg.png" height="120" alt="Card image">
 							<div class="card-img-overlay" style="padding-top: 5px">
 								<h4 class="card-title text-uppercase">WELCOME <?php echo $ausername; ?></h4>
-								<p class="card-text" id="cText">You are logged-in to CLIENT control panel, here are some of the basic information about hospital and some basic functions to perform. </p>
+								<p class="card-text" id="cText">You are logged-in to CLIENT control panel, here are some of the basic information about your invoices and sales </p>
 <!--							<p id="wText" class="card-text text-warning"><i class="fa fa-info-circle"></i><b> THERE ARE <?php //echo mysqli_num_rows($resultcountmsg); ?> UNREAD MESSAGES AND  <?php echo $acount; ?> UNSCHEDULED APPOINTMENTS. </b></p>-->
 								<!--<p class="card-text"><small class="text-white">~AlphaCare</small></p>-->
 							</div>
@@ -90,39 +93,39 @@ elseif(isset($_SESSION['ausername']))
 	
 				
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 hvr-float-shadow Hoveranimatevp" onClick="window.location='view-patients.php'">
+                    <div class="col-md-3 col-sm-6 hvr-float-shadow Hoveranimatevp" >
                         <div class="white-box">
-							<h3 class="box-title"><b>Patients Admitted</b></h3>
+							<h3 class="box-title"><b>Invoices Today</b></h3>
 							<ul class="list-inline two-part">
-								<li><i class="fa fa-wheelchair text-info Hoveranimatevpt"></i></li>
-								<li class="text-right"><span class="counter"><?php echo $pcount ?></span></li>
+								<li><i class="fa fa-pencil-square-o text-info Hoveranimatevpt"></i></li>
+								<li class="text-right"><span class="counter"><?php echo $bcount ?></span></li>
 							</ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 hvr-float-shadow" onClick="window.location='view-doctors.php'">
-                        <div class="white-box">
-							<h3 class="box-title"><b>Doctors</b></h3>
+                    <div class="col-md-3 col-sm-6 hvr-float-shadow">
+                        <div class="white-box p-b-40">
+							<h3 class="box-title"><b>Sales Today</b></h3>
 							<ul class="list-inline two-part">
-								<li><i class="fa fa-user-md text-info"></i></li>
-								<li class="text-right"><span class="counter"><?php echo $dcount ?></span></li>
+								<li><i class="fa fa-clipboard-check text-info"></i></li>
+								<li class="text-right"><span class="counter" style="font-size: 30px"><?php echo $sumcount[0]; ?></span></li>
 							</ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 hvr-float-shadow" onClick="window.location='view-staffs.php'">
+                    <div class="col-md-3 col-sm-6 hvr-float-shadow">
                         <div class="white-box">
-							<h3 class="box-title"><b>Staffs</b></h3>
+							<h3 class="box-title"><b>All Invoices</b></h3>
 							<ul class="list-inline two-part">
-								<li><i class="fa fa-id-badge text-info"></i></li>
-								<li class="text-right"><span class="counter"><?php echo $scount ?></span></li>
+								<li><i class="fa fa-clipboard-list text-info"></i></li>
+								<li class="text-right"><span class="counter"><?php echo $totbcount ?></span></li>
 							</ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 hvr-float-shadow" onClick="window.location='view-wards.php'">
-                        <div class="white-box">
-							<h3 class="box-title"><b>Available Wards</b></h3>
+                    <div class="col-md-3 col-sm-6 hvr-float-shadow">
+                        <div class="white-box p-b-40">
+							<h3 class="box-title"><b>Total Sales</b></h3>
 							<ul class="list-inline two-part">
-								<li><i class="fa fa-bed text-info"></i></li>
-								<li class="text-right"><span class="counter"><?php echo $wcount ?></span></li>
+								<li><i class="fa fa-rupee-sign text-info"></i></li>
+								<li class="text-right"><span style="font-size: 30px" class="counter"><?php echo $totsumcount[0]; ?></span></li>
 							</ul>
                         </div>
                     </div>
@@ -130,36 +133,36 @@ elseif(isset($_SESSION['ausername']))
                 <!--/row -->
 				<!--row -->
                 <div class="row p-t-10 p-b-0">
-                    <div class="col-md-3 col-sm-6 Hoveranimatep hvr-float" data-toggle="tooltip" data-original-title="Admit new Patient" onClick="window.location='add-patient.php'">
+                    <div class="col-md-6 col-sm-6 Hoveranimatep hvr-float" data-toggle="tooltip" data-original-title="Create New Bill" onClick="window.location='create-invoice.php'">
                         <div class="white-box">
                             <div class="r-icon-stats">
-                                <i class="fa fa-wheelchair bg-black Hoveranimatepat"></i>
+                                <i class="fa fa-clipboard bg-black Hoveranimatepat"></i>
                                 <div class="bodystate p-t-10">
-									<h4><b>ADD PATIENT</b></h4>
+									<h4><b>CREATE BILL</b></h4>
                                     <!--<span class="text-muted" style="font-size: 80%"></span>-->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 Hoveranimated hvr-float" data-toggle="tooltip" data-original-title="<?php echo $acount.' '; ?>Unscheduled Appointments" onClick="window.location='view-appointments.php'">
+                    <div class="col-md-6 col-sm-6 Hoveranimated hvr-float" data-toggle="tooltip" data-original-title="Click to view bills" onClick="window.location='view-paid-bills.php'">
                         <div class="white-box">
                             <div class="r-icon-stats">
-                                <i class="fa fa-calendar-alt bg-black Hoveranimatedoc"></i>
+                                <i class="fa fa-paste bg-black Hoveranimatedoc"></i>
                                 <div class="bodystate" style="padding-left: 5px; padding-top: 0px">
-									<h4><b>VIEW <br> APPOINTMENT</b></h4>
+									<h4><b>VIEW BILLS</b></h4>
                                     <!--<span class="text-muted" style="font-size: 80%"></span>-->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 Hoveranimates hvr-float" data-toggle="tooltip" data-original-title="<?php  echo mysqli_num_rows($resultcountmsg).' '; ?>Unread Messages" onClick="window.location='inbox.php'">
+                    <!-- <div class="col-md-3 col-sm-6 Hoveranimates hvr-float" data-toggle="tooltip" data-original-title="<?php  //echo mysqli_num_rows($resultcountmsg).' '; ?>Unread Messages" onClick="window.location='inbox.php'">
                         <div class="white-box">
                             <div class="r-icon-stats">
                                 <i class="far fa-envelope bg-black Hoveranimatestaff"></i>
                                 <div class="bodystate p-t-10" style="padding-left: 6px">
-									<h4><b>VIEW MESSAGE</b></h4>
+									<h4><b>VIEW MESSAGE</b></h4> 
                                     <!--<span class="text-muted" style="font-size: 80%"></span>-->
-                                </div>
+                              <!--  </div>
                             </div>
                         </div>
                     </div>
@@ -170,10 +173,10 @@ elseif(isset($_SESSION['ausername']))
                                 <div class="bodystate p-t-10">
 									<h4><b>VIEW BILLS</b></h4>
                                     <!--<span class="text-muted" style="font-size: small"></span>-->
-                                </div>
+                             <!--   </div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <!--/row -->
                 
@@ -201,22 +204,22 @@ elseif(isset($_SESSION['ausername']))
 		$(document).ready(function(){  
 			$('.Hoveranimated').hover(function(){
 				$(".Hoveranimatedoc").removeClass("bg-black").addClass("bg-success");
-				$(".Hoveranimatedoc").removeClass("fa-calendar-alt").addClass("fa-eye");
+				$(".Hoveranimatedoc").removeClass("fa-paste").addClass("fa-plus");
 			},
 			function(){
 				$(".Hoveranimatedoc").removeClass("bg-success").addClass("bg-black");
-				$(".Hoveranimatedoc").removeClass("fa-eye").addClass("fa-calendar-alt");
+				$(".Hoveranimatedoc").removeClass("fa-plus").addClass("fa-paste");
 			}
 									
 			)
 			
 			$('.Hoveranimatep').hover(function(){
 				$(".Hoveranimatepat").removeClass("bg-black").addClass("bg-success");
-				$(".Hoveranimatepat").removeClass("fa-wheelchair").addClass("fa-plus");
+				$(".Hoveranimatepat").removeClass("fa-clipboard").addClass("fa-plus");
 			},
 			function(){
 				$(".Hoveranimatepat").removeClass("bg-success").addClass("bg-black");
-				$(".Hoveranimatepat").removeClass("fa-plus").addClass("fa-wheelchair");
+				$(".Hoveranimatepat").removeClass("fa-plus").addClass("fa-clipboard");
 			}
 									
 			)

@@ -15,7 +15,7 @@
 			<!-- User profile-->
 			<li class="user-pro">
 				<a href="#" class="waves-effect">
-					<img src="../plugins/images/users/doctor-female.jpg" class="img-circle"> 
+					<img src="../plugins/images/users/shop.png" class="img-circle"> 
 					
 					<!--<img src="../plugins/images/users/doctor-male.jpg" alt="user-img" class="img-circle">--> <span class="hide-menu"><?php echo $ausername; ?><span class="fa arrow"></span></span>
 				</a>
@@ -40,10 +40,10 @@
 					<li> <a href="add-patient.php">Add Patient</a> </li>
 				</ul>
 			</li> --->
-			<li> <a href="create-invoice.php" class="waves-effect text-white"><i class="fa fa-calendar-o p-r-10"></i> <span class="hide-menu"> Create Bill <span class="fa arrow"></span></span></a>
+			<li> <a href="create-invoice.php" class="waves-effect text-white"><i class="fa fa-pencil-square-o p-r-10"></i> <span class="hide-menu"> Create Bill <span class="fa arrow"></span></span></a>
 	
 			</li>
-			<li> <a href="view-wards.php" class="waves-effect text-white"><i class="fa fa-hospital-o p-r-10"></i> <span class="hide-menu"> Show bills <span class="fa arrow"></span></span></a>
+			<li> <a href="view-paid-bills.php" class="waves-effect text-white"><i class="fa fa-file-text p-r-10"></i> <span class="hide-menu"> Show bills <span class="fa arrow"></span></span></a>
 
 			</li>
 			<!--- <li> <a href="javascript:void(0);" class="waves-effect text-white"><i class="fa fa-envelope p-r-10"></i> <span class="hide-menu"> Messages <span class="fa arrow"></span></span></a>

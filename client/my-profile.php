@@ -176,9 +176,9 @@ if(isset($_POST['changepw']))
                             <div class="user-bg"> <img width="100%" height="100%" alt="user" src="../plugins/images/profile-menu.png">
                                 <div class="overlay-box">
                                     <div class="user-content">
-                                        <a href="javascript:void(0)"><img src="../plugins/images/users/doctor-female.jpg" class="thumb-lg img-circle" ></a>
-                                        <h4 class="text-white"><?php echo $row["cuname"]; ?></h4>
-                                        <h5 class="text-white"><?php echo $row["cemail"]; ?></h5>
+                                        <a href="javascript:void(0)"><img src="../plugins/images/users/shop.png" class="thumb-lg img-circle" ></a>
+                                        <h4 class="text-white"><?php echo $row["sname"]; ?></h4>
+                                        <h5 class="text-white"><?php echo $row["semail"]; ?></h5>
                                     </div>
                                 </div>
                             </div>
