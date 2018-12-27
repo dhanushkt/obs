@@ -70,8 +70,8 @@ require('connect.php');
 							<img id="theImgId" class="card-img" src="../plugins/images/cards/bg.png" height="120" alt="Card image">
 							<div class="card-img-overlay" style="padding-top: 5px">
 								<h4 class="card-title text-uppercase">WELCOME <?php echo $ausername; ?></h4>
-								<p class="card-text">You are logged-in to ADMIN control panel, here are some of the basic information about hospital and some basic functions to perform. </p>
-								<p class="card-text"><small class="text-white">~AlphaCare</small></p>
+								<p class="card-text">You are logged-in to ADMIN control panel, here are some of the basic information and some basic functions to perform. </p>
+								<p class="card-text"><small class="text-white">~AlphaSystems</small></p>
 							</div>
 						</div>
 					</div>
