@@ -1,16 +1,21 @@
 <?php
 include '../login/accesscontroldoc.php';
 require('connect.php');
-if(isset($_SESSION['dusername']))
+if(isset($_SESSION['cusername']))
 {
-	$ausername=$_SESSION['dusername'];
+	$ausername=$_SESSION['cusername'];
 }
 elseif(isset($_SESSION['ausername']))
 {
 	$ausername=$_SESSION['ausername'];
 }
 
-$getvinfoquery="SELECT *,patients.p_id,patients.fname,patients.lname,patients.dod,patients.doj,wards.ward_no,wards.floor FROM ip_bills JOIN patients ON ip_bills.p_id=patients.p_id JOIN wards ON patients.ward_id=wards.ward_id";
+$getcid="SELECT cno FROM clients WHERE cuname='$ausername'";
+$exegetcid=mysqli_query($connection,$getcid);
+$getquery=mysqli_fetch_assoc($exegetcid);
+$cid=$getquery['cno'];
+
+$getvinfoquery="SELECT * FROM bills WHERE cno='$cid' ORDER BY billdate ";
 $getvinforesult=mysqli_query($connection,$getvinfoquery);
 
 date_default_timezone_set('Asia/Kolkata');
@@ -108,11 +113,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 <table id="myTable" class="table table-striped">
                                     <thead>
                                         <tr>
-											<th>ID</th>
-                                            <th>Patient Name</th>
-                                            <th>Discharge date</th>
-                                            <th>Ward No</th>
-                                            <th>Admitted days</th>
+											<th>Bill Nnumber</th>
+                                            <th>Customer Name</th>
+                                            <th>Bill date</th>
+                                            <th>Mobile No</th>
+<!--                                            <th>Admitted days</th>-->
                                             <th>Total amount</th>
 											<th>Actions</th>
                                         </tr>
@@ -121,15 +126,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<?php while($getvrow=mysqli_fetch_assoc($getvinforesult)) { ?>
                                         <tr>
 											<td><?php echo $getvrow['bill_id']; ?> </td>
-											<td><a href="edit-patient-profile.php?id=<?php echo $getvrow['p_id']; ?>"><?php echo $getvrow['fname'].' '.$getvrow['lname']; ?></a></td>
-											<td><?php $datev=$getvrow['dod'];
-											$myDateTime = DateTime::createFromFormat('Y-m-d', $datev);
-											$dovc = $myDateTime->format('d-m-Y');  echo $dovc; ?> </td>
-                                            <td><?php echo $getvrow['ward_no']; ?></td>
-                                            <td><?php $dateofjoin=$getvrow['doj'];
-											$dateofdis=$getvrow['dod'];
-											$dayscount=strtotime($dateofdis) - strtotime($dateofjoin);
-											$days=round($dayscount / (60* 60 * 24)); echo $days; ?></td>
+											<td><a href="edit-patient-profile.php?id=<?php echo $getvrow['cno']; ?>"><?php echo $getvrow['custname']; ?></a></td>
+											<td><?php echo $getvrow['billdate']; //$datev=$getvrow['dod'];
+											//$myDateTime = DateTime::createFromFormat('Y-m-d', $datev);
+											//$dovc = $myDateTime->format('d-m-Y');  echo $dovc; ?> </td>
+                                            <td><?php echo $getvrow['custphno']; ?></td>
+                                             <!-- <td><?php //$dateofjoin=$getvrow['doj'];
+											//$dateofdis=$getvrow['dod'];
+											//$dayscount=strtotime($dateofdis) - strtotime($dateofjoin);
+											//$days=round($dayscount / (60* 60 * 24)); echo $days; ?></td> -->
                                             <td><?php  echo '&#8377; '.$getvrow['total_amt']; ?></td>
 											<td><a class="btn btn-info text-white" href="ip-invoice.php?id=<?php echo $getvrow['bill_id']; ?>" target="_blank">Show Bill</a></td>
                                         </tr>
