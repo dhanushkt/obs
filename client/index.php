@@ -12,16 +12,20 @@ elseif(isset($_SESSION['ausername']))
 date_default_timezone_set('Asia/Kolkata');
 $date=date("d-m-Y");
 
-$getbillcount=mysqli_query($connection,"SELECT * FROM bills WHERE billdate='$date'");
+$fetchcno=mysqli_query($connection,"SELECT cno FROM clients WHERE cuname='$ausername'");
+$cno=$fetchcno['cno'];
+
+
+$getbillcount=mysqli_query($connection,"SELECT * FROM bills WHERE (billdate='$date') AND (cno=$cno)");
 $bcount=mysqli_num_rows($getbillcount);
 
-$getamtsum=mysqli_query($connection,"SELECT sum(total_amt) FROM bills WHERE billdate='$date'");
+$getamtsum=mysqli_query($connection,"SELECT sum(total_amt) FROM bills WHERE (billdate='$date') AND (cno=$cno)");
 $sumcount=mysqli_fetch_array($getamtsum);
 
-$gettotbillcount=mysqli_query($connection,"SELECT * FROM bills");
+$gettotbillcount=mysqli_query($connection,"SELECT * FROM bills WHERE cno=$cno");
 $totbcount=mysqli_num_rows($gettotbillcount);
 
-$gettotamtsum=mysqli_query($connection,"SELECT sum(total_amt) FROM bills");
+$gettotamtsum=mysqli_query($connection,"SELECT sum(total_amt) FROM bills WHERE cno=$cno");
 $totsumcount=mysqli_fetch_array($gettotamtsum);
 
 //$countapoint=mysqli_query($connection,"SELECT * FROM appointments JOIN doctors ON appointments.doc_id = doctors.doc_id  WHERE (status='In Process') AND (doctors.username='$ausername')");
@@ -64,7 +68,7 @@ $totsumcount=mysqli_fetch_array($gettotamtsum);
 					<!--add this line to include bg image to title: style="background:url(../plugins/images/heading-title-bg.jpg) no-repeat center center /cover;" -->
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12" >
-                        <h4 class="page-title">Doctor Dashboard</h4>
+                        <h4 class="page-title">Client Dashboard</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->

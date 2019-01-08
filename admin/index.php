@@ -2,18 +2,20 @@
 include '../login/accesscontroladmin.php';
 $ausername=$_SESSION['ausername'];
 require('connect.php');
+date_default_timezone_set('Asia/Kolkata');
+$date=date("d-m-Y");
 
-//$getpatientcount=mysqli_query($connection,"SELECT * FROM patients WHERE dod IS NULL");
-//$pcount=mysqli_num_rows($getpatientcount);
-//
-//$getdoccount=mysqli_query($connection,"SELECT * FROM doctors");
-//$dcount=mysqli_num_rows($getdoccount);
-//
-//$getstaffcount=mysqli_query($connection,"SELECT * FROM staffs");
-//$scount=mysqli_num_rows($getstaffcount);
-//
-//$getwardcount=mysqli_query($connection,"SELECT * FROM wards WHERE status='0'");
-//$wcount=mysqli_num_rows($getwardcount);
+$getbillcount=mysqli_query($connection,"SELECT * FROM bills WHERE billdate='$date'");
+$bcount=mysqli_num_rows($getbillcount);
+
+$getamtsum=mysqli_query($connection,"SELECT * FROM clients");
+$sumcount=mysqli_num_rows($getamtsum);
+
+$gettotbillcount=mysqli_query($connection,"SELECT * FROM bills");
+$totbcount=mysqli_num_rows($gettotbillcount);
+
+$gettotamtsum=mysqli_query($connection,"SELECT sum(total_amt) FROM bills");
+$totsumcount=mysqli_fetch_array($gettotamtsum);
 ?>
 <!DOCTYPE html>
 <!--
@@ -79,39 +81,39 @@ require('connect.php');
 	
 				
                 <div class="row">
-                    <div class="col-md-3 col-sm-6 hvr-float-shadow" onClick="window.location='view-patients.php'">
+                    <div class="col-md-3 col-sm-6 hvr-float-shadow">
                         <div class="white-box">
-							<h3 class="box-title"><b>Patients Admitted</b></h3>
+							<h3 class="box-title"><b>Registred Clients</b></h3>
 							<ul class="list-inline two-part">
-								<li><i class="fa fa-wheelchair text-info"></i></li>
-								<li class="text-right"><span class="counter"><?php echo $pcount ?></span></li>
+								<li><i class="fa fa-users text-info"></i></li>
+								<li class="text-right"><span class="counter"><?php echo $sumcount ?></span></li>
 							</ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 hvr-float-shadow" onClick="window.location='view-doctors.php'">
+                    <div class="col-md-3 col-sm-6 hvr-float-shadow">
                         <div class="white-box">
-							<h3 class="box-title"><b>Doctors</b></h3>
+							<h3 class="box-title"><b>Invoices Today</b></h3>
 							<ul class="list-inline two-part">
-								<li><i class="fa fa-user-md text-info"></i></li>
-								<li class="text-right"><span class="counter"><?php echo $dcount ?></span></li>
+								<li><i class="fa fa-clipboard-check text-info"></i></li>
+								<li class="text-right"><span class="counter"><?php echo $bcount ?></span></li>
 							</ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 hvr-float-shadow" onClick="window.location='view-staffs.php'">
+                    <div class="col-md-3 col-sm-6 hvr-float-shadow">
                         <div class="white-box">
-							<h3 class="box-title"><b>Staffs</b></h3>
+							<h3 class="box-title"><b>All Invoices</b></h3>
 							<ul class="list-inline two-part">
-								<li><i class="fa fa-id-badge text-info"></i></li>
-								<li class="text-right"><span class="counter"><?php echo $scount ?></span></li>
+								<li><i class="fa fa-clipboard-list text-info"></i></li>
+								<li class="text-right"><span class="counter"><?php echo $totbcount ?></span></li>
 							</ul>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 hvr-float-shadow" onClick="window.location='view-wards.php'">
-                        <div class="white-box">
-							<h3 class="box-title"><b>Available Wards</b></h3>
+                    <div class="col-md-3 col-sm-6 hvr-float-shadow">
+                        <div class="white-box p-b-40">
+							<h3 class="box-title"><b>Total Sales</b></h3>
 							<ul class="list-inline two-part">
-								<li><i class="fa fa-bed text-info"></i></li>
-								<li class="text-right"><span class="counter"><?php echo $wcount ?></span></li>
+								<li><i class="fa fa-rupee-sign text-info"></i></li>
+								<li class="text-right"><span style="font-size: 30px" class="counter"><?php echo $totsumcount[0]; ?></span></li>
 							</ul>
                         </div>
                     </div>
@@ -119,51 +121,29 @@ require('connect.php');
                 <!--/row -->
 				<!--row -->
                 <div class="row p-t-10">
-                    <div class="col-md-3 col-sm-6 Hoveranimatep hvr-float" data-toggle="tooltip" data-original-title="Admit new Patient" onClick="window.location='add-patient.php'">
+                    <div class="col-md-6 col-sm-6 Hoveranimatep hvr-float" data-toggle="tooltip" data-original-title="Register new Client" onClick="window.location='../login/register-client.php'">
                         <div class="white-box">
                             <div class="r-icon-stats">
-                                <i class="fa fa-wheelchair bg-black Hoveranimatepat"></i>
+                                <i class="fa fa-user-plus bg-black Hoveranimatepat"></i>
                                 <div class="bodystate p-t-10">
-									<h4><b>ADD PATIENT</b></h4>
+									<h4><b>REGISTER CLIENT</b></h4>
                                     <!--<span class="text-muted" style="font-size: 80%"></span>-->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 Hoveranimated hvr-float" data-toggle="tooltip" data-original-title="Create Doctor account" onClick="window.location='add-doctor.php'">
+                    <div class="col-md-6 col-sm-6 Hoveranimated hvr-float" data-toggle="tooltip" data-original-title="View Clients" onClick="window.location='view-clients.php'">
                         <div class="white-box">
                             <div class="r-icon-stats">
-                                <i class="fa fa-user-md bg-black Hoveranimatedoc"></i>
+                                <i class="fa fa-user bg-black Hoveranimatedoc"></i>
                                 <div class="bodystate p-l-10 p-t-10">
-									<h4><b>ADD DOCTOR</b></h4>
+									<h4><b>VIEW CLIENTS</b></h4>
                                     <!--<span class="text-muted" style="font-size: 80%"></span>-->
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-sm-6 Hoveranimates hvr-float" data-toggle="tooltip" data-original-title="Create Staff account" onClick="window.location='add-staff.php'">
-                        <div class="white-box">
-                            <div class="r-icon-stats">
-                                <i class="ti-id-badge bg-black Hoveranimatestaff"></i>
-                                <div class="bodystate p-t-10">
-									<h4><b>ADD STAFF</b></h4>
-                                    <!--<span class="text-muted" style="font-size: 80%"></span>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 col-sm-6 Hoveranimatew hvr-float" data-toggle="tooltip" data-original-title="Create new ward" onClick="window.location='add-ward.php'">
-                        <div class="white-box">
-                            <div class="r-icon-stats">
-                                <i class="fa fa-bed bg-black Hoveranimatewrd"></i>
-                                <div class="bodystate p-t-10">
-									<h4><b>ADD WARD</b></h4>
-                                    <!--<span class="text-muted" style="font-size: small"></span>-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+				</div>
                 <!--/row -->
                 
                 <!--DNS End-->
@@ -190,22 +170,22 @@ require('connect.php');
 		$(document).ready(function(){  
 			$('.Hoveranimated').hover(function(){
 				$(".Hoveranimatedoc").removeClass("bg-black").addClass("bg-success");
-				$(".Hoveranimatedoc").removeClass("fa-user-md").addClass("fa-plus");
+				$(".Hoveranimatedoc").removeClass("fa-user").addClass("fa-eye");
 			},
 			function(){
 				$(".Hoveranimatedoc").removeClass("bg-success").addClass("bg-black");
-				$(".Hoveranimatedoc").removeClass("fa-plus").addClass("fa-user-md");
+				$(".Hoveranimatedoc").removeClass("fa-eye").addClass("fa-user");
 			}
 									
 			)
 			
 			$('.Hoveranimatep').hover(function(){
 				$(".Hoveranimatepat").removeClass("bg-black").addClass("bg-success");
-				$(".Hoveranimatepat").removeClass("fa-wheelchair").addClass("fa-plus");
+				$(".Hoveranimatepat").removeClass("fa-user-plus").addClass("fa-plus");
 			},
 			function(){
 				$(".Hoveranimatepat").removeClass("bg-success").addClass("bg-black");
-				$(".Hoveranimatepat").removeClass("fa-plus").addClass("fa-wheelchair");
+				$(".Hoveranimatepat").removeClass("fa-plus").addClass("fa-user-plus");
 			}
 									
 			)

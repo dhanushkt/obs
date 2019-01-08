@@ -126,7 +126,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<?php while($getvrow=mysqli_fetch_assoc($getvinforesult)) { ?>
                                         <tr>
 											<td><?php echo $getvrow['bill_id']; ?> </td>
-											<td><a href="edit-patient-profile.php?id=<?php echo $getvrow['cno']; ?>"><?php echo $getvrow['custname']; ?></a></td>
+											<td><?php echo $getvrow['custname']; ?></td>
 											<td><?php echo $getvrow['billdate']; //$datev=$getvrow['dod'];
 											//$myDateTime = DateTime::createFromFormat('Y-m-d', $datev);
 											//$dovc = $myDateTime->format('d-m-Y');  echo $dovc; ?> </td>

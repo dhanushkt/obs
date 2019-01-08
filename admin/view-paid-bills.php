@@ -122,7 +122,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										<?php while($getvrow=mysqli_fetch_assoc($getvinforesult)) { ?>
                                         <tr>
 											<td><?php echo $getvrow['bill_id']; ?> </td>
-											<td><a href="edit-client-profile.php?id=<?php echo $getvrow['cno']; ?>"><?php echo $getvrow['custname']; ?></a></td>
+											<td><?php echo $getvrow['custname']; ?></td>
 											<td><?php echo $getvrow['billdate']; //$datev=$getvrow['dod'];
 											//$myDateTime = DateTime::createFromFormat('Y-m-d', $datev);
 											//$dovc = $myDateTime->format('d-m-Y');  echo $dovc; ?> </td>
@@ -132,7 +132,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 											//$dayscount=strtotime($dateofdis) - strtotime($dateofjoin);
 											//$days=round($dayscount / (60* 60 * 24)); echo $days; ?></td> -->
                                             <td><?php  echo '&#8377; '.$getvrow['total_amt']; ?></td>
-											<td><a class="btn btn-info text-white" href="ip-invoice.php?id=<?php echo $getvrow['bill_id']; ?>" target="_blank">Show Bill</a></td>
+											<td><a class="btn btn-info text-white" href="invoice.php?id=<?php echo $getvrow['bill_id']; ?>" target="_blank">Show Bill</a></td>
                                         </tr>
                                         <?php } ?>
                                     </tbody>
