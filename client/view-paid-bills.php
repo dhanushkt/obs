@@ -80,7 +80,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Inpatient Bills</h4>
+                        <h4 class="page-title">Paid Bills</h4>
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <a href="../index.html" target="_blank" class="btn btn-info pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Home</a>
@@ -106,7 +106,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</div> 
 								<?php }?>
                         <div class="panel panel-info">
-                            <div class="panel-heading">IP Bills Log</div>
+                            <div class="panel-heading">Bills Log</div>
                             <div class="panel-wrapper collapse in" aria-expanded="true">
                                 <div class="panel-body">
                                     <div class="table-responsive">

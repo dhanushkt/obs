@@ -167,7 +167,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
                                 </div>
                                 <div class="form-group">
 									<center>
-									<button type="submit" name="docsubmit" class="btn btn-info waves-effect waves-light"><span class="btn-label"><i class="fa fa-file-text-o"></i></span>Create Bill</button>
+									<button type="submit" name="docsubmit" class="btn btn-info waves-effect waves-light"><span class="btn-label"><i class="fa fa-pencil-square-o"></i></span>Create Bill</button>
 									</center>
                                 </div>
                             </form>
