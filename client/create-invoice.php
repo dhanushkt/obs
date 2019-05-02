@@ -154,17 +154,24 @@ scratch. This page gets rid of all links and provides the needed markup only.
 										</div>
 									</div>
 								</div>
-                                <div class="form-group">
-                                    <label class="col-sm-12 p-l-0">Payment Method</label>
-                                    <div class="col-sm-12 p-l-0">
-                                        <select class="form-control" name="cmethod" required>
-                                            <option selected hidden disabled>Select Payment Method</option>
-                                            <option value="Cash">Cash</option>
-                                            <option value="Debit/Credit Card">Debit/Credit Card</option>
-											<option value="Online">Online (PAYTM,GPay)</option>
-                                        </select>
-                                    </div>
-                                </div>
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											<label class="col-sm-12 p-l-0">Payment Method</label>
+											<div class="col-sm-12 p-l-0">
+												<select class="form-control" name="cmethod" required>
+													<option selected hidden disabled>Select Payment Method</option>
+													<option value="Cash">Cash</option>
+													<option value="Debit/Credit Card">Debit/Credit Card</option>
+													<option value="Online">Online (PAYTM,GPay)</option>
+												</select>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										
+									</div>
+								</div>
                                 <div class="form-group">
 									<center>
 									<button type="submit" name="docsubmit" class="btn btn-info waves-effect waves-light"><span class="btn-label"><i class="fa fa-pencil-square-o"></i></span>Create Bill</button>

@@ -36,7 +36,7 @@ $ausername=$_SESSION['ausername'];
                 <div class="row bg-title">
                     <!-- .page title -->
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title">Doctors</h4>
+                        <h4 class="page-title">View Client</h4>
                     </div>
                     <!-- /.page title -->
                     <!-- .breadcrumb -->
@@ -64,7 +64,7 @@ $ausername=$_SESSION['ausername'];
                                 <div class="col-md-8 col-sm-8">
                                     <h3 class="box-title m-b-0"><?php echo $result["cuname"]; ?></h3> <small><?php //echo $result["sname"]; ?></small>
                                     <p class="p-0">
-										<i class="fa fa-shopping-cart"></i><?php echo ' '.$result["sname"]; ?>
+										<i class="fa fa-shopping-cart"></i><?php echo ' '.$result["sname"]; ?> <br>
 										<a href="mailto:<?php echo $result["email"]; ?>"> <?php echo $result["cemail"]; ?> </a> <br>
 										<i class="fa fa-phone"></i><?php echo ' '.$result["cphno"]; ?>
 										

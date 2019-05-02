@@ -13,7 +13,8 @@ date_default_timezone_set('Asia/Kolkata');
 $date=date("d-m-Y");
 
 $fetchcno=mysqli_query($connection,"SELECT cno FROM clients WHERE cuname='$ausername'");
-$cno=$fetchcno['cno'];
+$cnofetch=mysqli_fetch_assoc($fetchcno);
+$cno=$cnofetch['cno'];
 
 
 $getbillcount=mysqli_query($connection,"SELECT * FROM bills WHERE (billdate='$date') AND (cno=$cno)");

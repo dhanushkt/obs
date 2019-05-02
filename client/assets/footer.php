@@ -1,1 +1,1 @@
-<footer class="footer text-center"> 2018 &copy; AlphaCare - Online Hospital Management System </footer>
+<footer class="footer text-center"> 2019 &copy; AlphaSystems - Online Billing System </footer>
