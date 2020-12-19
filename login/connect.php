@@ -1,11 +1,11 @@
 <?php
-$connection = mysqli_connect("localhost","root","");
+$connection = mysqli_connect("103.102.234.230","kersahtn_invoiceadmin","invoiceadmin@12");
 if(!$connection)
 {
 	echo "failed to connect";
 	//die("Database Connection Failed" . mysqli_error($connection));
 }
-$dbselect = mysqli_select_db($connection,'obs');
+$dbselect = mysqli_select_db($connection,'kersahtn_invoice');
 if(!$dbselect)
 {
 	echo "failed to select the database";
