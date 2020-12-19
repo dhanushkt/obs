@@ -219,7 +219,7 @@ if (isset($_POST['submitNewItem'])) {
 						<td colspan="3" class="blank"></td>
 						<td colspan="2" class="text-right">Discount( in &#8377;)</td>
 						<td colspan="2">
-							<?php if ($getinfo['discount'] != '0.00') { ?>
+							<?php if (isset($getinfo['discount'])) { ?>
 								<span id="dbdis"><?php echo $getinfo['discount']; ?></span>
 							<?php } else { ?>
 								<input type="text" name="discount" id="discount" placeholder="">
