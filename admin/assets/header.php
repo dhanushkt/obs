@@ -14,9 +14,9 @@
                 <div class="top-left-part">
                     <a class="logo" href="index.php">
                         <!-- Logo icon image, you can use font-icon also -->
-                        <b><img src="../plugins/images/eliteadmin-logo.png" alt="home" /></b>
+                        <b><img src="../plugins/images/is-logo-dark.png" width="50" alt="home" /></b>
                         <!-- Logo text image you can use text also -->
-                        <span class="hidden-xs"><img src="../plugins/images/eliteadmin-text.png" alt="home" /></span>
+                        <span class="hidden-xs"><img src="../plugins/images/is-text-dark.png" width="130" alt="home" /></span>
                     </a>
                 </div>
                 <!-- /Logo -->
