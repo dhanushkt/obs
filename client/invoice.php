@@ -282,7 +282,7 @@ if (isset($_POST['submitNewItem'])) {
 			</div>
 		</div>
 		<div class="invoice-ftr">
-			<textarea readonly placeholder="This is digitally generated invoice and does not require physical signatures"></textarea>
+			<textarea readonly placeholder="This is a digitally generated invoice and does not require physical signatures"></textarea>
 			<center>
 				<h6>THANK YOU</h6>
 				<h6>www.infinitysystems.in</h6>
