@@ -57,6 +57,11 @@ if (isset($_POST['submitNewItem'])) {
 	<!-- Custom Main Stylesheet CSS -->
 	<link rel="stylesheet" href="../plugins/css/invoice.css">
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.2.js"></script>
+	<style>
+		.hide-item {
+			display: none !important;
+		}
+	</style>
 </head>
 
 <body>
@@ -234,31 +239,35 @@ if (isset($_POST['submitNewItem'])) {
 												} ?></span>
 						</td>
 					</tr>
-					<!-- <tr>
+					<tr class="hide-item">
 						<td colspan="3" class="blank"></td>
 						<td colspan="2" class="text-right">Amount Paid( in &#8377; )</td>
 						<td colspan="2">
-							<?php //if ($getinfo['amt_paid'] != '0.00') { 
-							?>
-								<span id="dbamtp"><?php //echo $getinfo['amt_paid']; 
-													?></span>
-							<?php //} else { 
+							<?php if ($getinfo['amt_paid'] != '0.00') { ?>
+								<span id="dbamtp">
+									<?php
+									echo $getinfo['amt_paid'];
+									?>
+								</span>
+							<?php } else {
 							?>
 								<input type="text" id="paid" placeholder="">
-							<?php //} 
-							?>
+							<?php } ?>
 						</td>
-					</tr> -->
-					<!-- <tr>
+					</tr>
+					<tr class="hide-item">
 						<td colspan="3" class="blank"></td>
 						<td colspan="2" class="text-right">Amount Due( in &#8377; )</td>
 						<td colspan="2">
-							<span id="due"><?php //if ($getinfo['amt_due'] != '0.00') {
-											//echo $getinfo['amt_due'];
-											//} 
-											?></span>
+							<span id="due">
+								<?php
+								if ($getinfo['amt_due'] != '0.00') {
+									echo $getinfo['amt_due'];
+								}
+								?>
+							</span>
 						</td>
-					</tr> -->
+					</tr>
 					<!--<tr><td colspan="3"><button onClick="myFunction()">Print</button></td></tr>-->
 					<tr class="item-hide">
 						<td colspan="7">
