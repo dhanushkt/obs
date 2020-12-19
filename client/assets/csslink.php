@@ -1,6 +1,6 @@
 <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/favicon.png">
-    <title>AlphaSystems - OBS</title>
+    <title>Invoice | Infinity Systems</title>
     <!-- Bootstrap Core CSS -->
     <link href="../plugins/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../plugins/bower_components/bootstrap-extension/css/bootstrap-extension.css" rel="stylesheet">
