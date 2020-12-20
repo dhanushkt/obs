@@ -3,6 +3,6 @@ include_once 'connect.php';
 session_start();
 if(!(isset($_SESSION['cusername'])||isset($_SESSION['ausername'])))
 {
-	echo'<script> window.location="403.php";</script>';
+	//echo'<script> window.location="403.php";</script>';
 }
 ?>
